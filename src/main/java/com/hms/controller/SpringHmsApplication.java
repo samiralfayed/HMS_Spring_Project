@@ -12,5 +12,6 @@ public class SpringHmsApplication {
 		SpringApplication.run(SpringHmsApplication.class, args);
 	}
 	//System.out.println("samir");
-
+	//System.out.println("samir");
+	//System.out.println("samir");
 }
