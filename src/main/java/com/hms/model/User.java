@@ -1,6 +1,8 @@
 package com.hms.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+//import lombok.NoArgsConstructor;
 import lombok.Setter;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,13 +10,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Getter
+//@NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int mid;
-
     private String username;
     private String password;
     private String fullName;
@@ -24,10 +27,10 @@ public class User {
     private String address;
     private String userType;
 
-    // Default constructor
+
     public User() { }
 
-    // Constructor with phone only
+
     public User(String phone) {
         this.phone = phone;
     }
