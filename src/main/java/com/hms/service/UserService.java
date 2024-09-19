@@ -14,5 +14,8 @@ public interface UserService {
     User fetchUserById(int id);
 
 
+    void deleteUserById(int id);
+
+
 
 }
