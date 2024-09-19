@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RootController {
 
-    @GetMapping(value= "/")
+    @GetMapping(value="/")
     public String rootMap(){
-        return "Samir";
+        return "Hello Spring! auto load after change";
     }
-@RequestMapping
+
+    @RequestMapping(value="/test", method= RequestMethod.GET)
+    public String testURL(){
+        return "Hello testURL!";
+    }
 }
