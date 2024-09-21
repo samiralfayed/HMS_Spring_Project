@@ -1,39 +1,29 @@
 package com.hms.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.DiscriminatorValue;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.logging.Logger;
-
-@Setter
 @Getter
+@Setter
+@Entity
+@DiscriminatorValue("RadiologicalTest")  // dtype value for RadiologicalTest
 public class RadiologicalTest extends LabTest {
-    private String plateDimension; // Fixed typo
 
-    private static final Logger LOG = Logger.getLogger(RadiologicalTest.class.getName());
+    private String plateDimension;  // Specific field for RadiologicalTest
 
-    public RadiologicalTest() {
-        // Default constructor
-    }
+    // Constructor
+    public RadiologicalTest() {}
 
-    public RadiologicalTest(String title, double cost, String plateDimension, boolean isAvailable) {
-        super(title, cost, isAvailable); // Initialize superclass fields
-        this.plateDimension = plateDimension; // Set specific field
+    public RadiologicalTest(String title, String type, double cost, boolean available, String plateDimension) {
+        super(title, cost, available);
+        this.plateDimension = plateDimension;
+
     }
 
     @Override
     public String returnLabTestInfo() {
-        return "Test Name: " + this.getTitle() + "\n<br>" +
-                "Cost: " + this.getCost() + "\n<br>" +
-                "Plate Dimension: " + this.getPlateDimension() + "\n<br>" +
-                "Availability: " + (this.isAvailable() ? "Available" : "Not Available");
-    }
-
-
-    public String show() {
-        return "Test Name: " + this.getTitle() + "\n<br>" +
-                "Plate Dimension: " + this.getPlateDimension() + "\n<br>" +
-                "Cost: " + this.getCost() + "\n<br>" +
-                "Availability: " + (this.isAvailable() ? "Available" : "Not Available");
+        return "Radiological Test: " + getTitle() + ", Plate Dimension: " + plateDimension ;
     }
 }

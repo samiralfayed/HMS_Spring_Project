@@ -34,7 +34,7 @@ public class UserServiceJPAImpl implements UserService {
 
     @Override
     public void deleteUserById(int userId) {
-        userJPARepo.deleteById(userId); // Fixed from userRepository to userJPARepo
+        userJPARepo.deleteById(userId);
     }
 
 
