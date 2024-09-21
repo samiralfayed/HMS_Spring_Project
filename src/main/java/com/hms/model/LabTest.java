@@ -1,39 +1,42 @@
 package com.hms.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import jakarta.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)  
+@DiscriminatorColumn(name = "dtype", discriminatorType = DiscriminatorType.STRING)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = PathologicalTest.class, name = "pathological"),
+        @JsonSubTypes.Type(value = RadiologicalTest.class, name = "radiological")
+})
 public abstract class LabTest {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String title;
     private double cost;
     private boolean available;
 
-    // Default constructor
-    public LabTest() {
-    }
 
-    // Parameterized constructor
+    // Constructor
+    public LabTest() {}
+
     public LabTest(String title, double cost, boolean available) {
         this.title = title;
         this.cost = cost;
         this.available = available;
     }
 
+    // Abstract method
     public abstract String returnLabTestInfo();
-
-    @Override
-    public String toString() {
-        return "Test Name: " + title + "\n" +
-                "Cost: " + cost + "\n" +
-                "Availability: " + (available ? "Available" : "Not Available");
-    }
-
-    public abstract String show();
 }
