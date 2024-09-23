@@ -7,10 +7,12 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
+
 @Setter
+@Getter
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)  
+
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype", discriminatorType = DiscriminatorType.STRING)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
@@ -20,13 +22,11 @@ import lombok.Setter;
 public abstract class LabTest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     private String title;
     private double cost;
     private boolean available;
-
 
     // Constructor
     public LabTest() {}
@@ -39,4 +39,6 @@ public abstract class LabTest {
 
     // Abstract method
     public abstract String returnLabTestInfo();
+
+
 }

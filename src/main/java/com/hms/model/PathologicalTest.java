@@ -1,17 +1,18 @@
 package com.hms.model;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
+
 @Setter
+@Getter
 @Entity
-@DiscriminatorValue("PathologicalTest")  // dtype value for PathologicalTest
+@DiscriminatorValue("PathologicalTest")
 public class PathologicalTest extends LabTest {
 
-    private String sampleType;  // Specific field for PathologicalTest
+    private String sampleType;
+
 
     // Constructor
     public PathologicalTest() {}
@@ -19,6 +20,7 @@ public class PathologicalTest extends LabTest {
     public PathologicalTest(String title, double cost, boolean available, String sampleType) {
         super(title, cost, available);
         this.sampleType = sampleType;
+
     }
 
     @Override

@@ -8,10 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@DiscriminatorValue("RadiologicalTest")  // dtype value for RadiologicalTest
+@DiscriminatorValue("RadiologicalTest")
 public class RadiologicalTest extends LabTest {
 
-    private String plateDimension;  // Specific field for RadiologicalTest
+    private String plateDimension;
 
     // Constructor
     public RadiologicalTest() {}
