@@ -13,9 +13,10 @@ public class SpringHmsApplication {
 			// Load MySQL JDBC driver
 			Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
 			System.out.println("Connection established successfully.");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Error: MySQL JDBC Driver class not found. Please add the driver dependency.");
 		} catch (Exception e) {
-				// Handle all exceptions in a single catch block
-				System.out.println("Error loading MySQL JDBC Driver: " + e.toString());
-			}
+			System.out.println("Unexpected error loading MySQL JDBC Driver: " + e.toString());
+		}
     }
 }
